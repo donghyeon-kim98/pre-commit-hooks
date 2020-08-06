@@ -1,0 +1,2 @@
+[tool.black]
+link-length = 120

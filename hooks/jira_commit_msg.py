@@ -1,7 +1,12 @@
 import argparse
 
 from .consts import PASS, FAIL, TICKET_ID
-from .helper import get_commit_msg, get_current_branch_name, get_ticket_id, is_special_commit
+from .helper import (
+    get_commit_msg,
+    get_current_branch_name,
+    get_ticket_id,
+    is_special_commit,
+)
 
 
 def abort(error_msg: str) -> None:
@@ -18,7 +23,7 @@ def match_current_branch(commit_msg: str) -> bool:
 
 
 def is_empty_msg(commit_msg: str) -> bool:
-    return not TICKET_ID.sub('', commit_msg).strip()
+    return not TICKET_ID.sub("", commit_msg).strip()
 
 
 def main() -> int:
@@ -46,5 +51,5 @@ def main() -> int:
     return PASS
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(main())

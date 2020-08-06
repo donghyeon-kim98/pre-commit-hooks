@@ -13,10 +13,12 @@ def get_commit_msg(filename: str) -> str:
 
 
 def get_current_branch_name() -> str:
+    # fmt: off
     return subprocess.run(
         ["git", "branch", "--show-current"],
         capture_output=True,
     ).stdout.strip().decode("utf-8")
+    # fmt: on
 
 
 def get_ticket_id(branch: str) -> str:
