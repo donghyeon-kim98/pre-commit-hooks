@@ -3,3 +3,9 @@
   entry: prepare-jira-commit-msg
   language: python
   stages: [prepare-commit-msg]
+
+- id: jira-commit-msg
+  name: jira commit message
+  entry: jira-commit-msg
+  language: python
+  stages: [commit-msg]

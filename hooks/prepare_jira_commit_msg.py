@@ -1,28 +1,7 @@
 import argparse
-import re
-import subprocess
 
-PASS = 0
-FAIL = 1
-BRANCH_TICKET_ID = re.compile(r'[a-z]{2,}-[0-9]+')
-TICKET_ID = re.compile(r'(?!PEP-8)[A-Z]{2,}-[0-9]+')
-
-
-def get_commit_msg(filename: str) -> str:
-    with open(filename, "r") as f:
-        return f.read().strip()
-
-
-def get_current_branch_name() -> str:
-    return subprocess.run(
-        ["git", "branch", "--show-current"],
-        capture_output=True,
-    ).stdout.strip().decode("utf-8")
-
-
-def get_ticket_id(branch: str) -> str:
-    ticket_id = BRANCH_TICKET_ID.match(branch)
-    return ticket_id.group().upper() if ticket_id else ""
+from .consts import PASS, TICKET_ID
+from .helper import get_commit_msg, get_current_branch_name, get_ticket_id
 
 
 def add_ticket_id(filename: str, commit_msg: str, ticket_id: str) -> None:
