@@ -37,12 +37,13 @@ def main():
 
     elif not match_current_branch(commit_msg):
         abort("Ticket number in commit message should match current branch name.")
+        return FAIL
 
     elif is_empty_msg(commit_msg):
         abort("Commit message should have content (except ticket number).")
         return FAIL
 
-    return FAIL
+    return PASS
 
 
 if __name__ == '__main__':
