@@ -1,2 +1,2 @@
 [tool.black]
-link-length = 120
+line-length = 120
