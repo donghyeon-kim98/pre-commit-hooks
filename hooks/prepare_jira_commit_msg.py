@@ -9,7 +9,7 @@ def add_ticket_id(filename: str, commit_msg: str, ticket_id: str) -> None:
         f.write(f"{ticket_id} {commit_msg}")
 
 
-def main():
+def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("filename")
     args = parser.parse_args()

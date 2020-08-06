@@ -21,7 +21,7 @@ def is_empty_msg(commit_msg: str) -> bool:
     return not TICKET_ID.sub('', commit_msg).strip()
 
 
-def main():
+def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("filename")
     args = parser.parse_args()
