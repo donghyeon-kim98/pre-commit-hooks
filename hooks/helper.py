@@ -9,7 +9,7 @@ def is_special_commit(commit_msg: str) -> bool:
 
 def get_commit_msg(filename: str) -> str:
     with open(filename, "r") as f:
-        return f.read().strip()
+        return f.read()
 
 
 def get_current_branch_name() -> str:

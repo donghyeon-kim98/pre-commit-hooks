@@ -7,7 +7,7 @@ from .helper import get_commit_msg, get_current_branch_name, get_ticket_id
 
 def add_ticket_id(filename: str, ticket_id: str) -> None:
     with open(filename, "r+") as f:
-        commit_msg = f.read()
+        commit_msg = f.read().strip()
         f.seek(0)
         f.write(f"{ticket_id} {commit_msg}")
         f.truncate()

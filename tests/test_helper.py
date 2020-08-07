@@ -21,7 +21,7 @@ def test_return_expected_commit_msg(temp_git_dir, commit_editmsg_ref, git_helper
         git_helpers.commit(expected_commit_msg)
 
         # Expect: Return return expected commit message
-        assert get_commit_msg(commit_editmsg_ref) == expected_commit_msg
+        assert get_commit_msg(commit_editmsg_ref).strip() == expected_commit_msg
 
 
 def test_return_ticket_id_in_branch_name(temp_git_dir, branch_with_ticket_id, ticket_id, git_helpers):
