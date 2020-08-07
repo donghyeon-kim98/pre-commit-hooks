@@ -4,7 +4,7 @@ from .consts import BRANCH_TICKET_ID
 
 
 def is_special_commit(commit_msg: str) -> bool:
-    return commit_msg.startswith(("Merge ", "Revert ", "Revert:"))
+    return commit_msg.startswith(("Merge", "Revert"))
 
 
 def get_commit_msg(filename: str) -> str:

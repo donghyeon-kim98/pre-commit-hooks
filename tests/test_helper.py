@@ -33,13 +33,12 @@ def test_return_ticket_id_in_branch_name(temp_git_dir, branch_with_ticket_id, ti
         assert get_ticket_id(branch_with_ticket_id) == ticket_id
 
 
-@pytest.mark.parametrize("commit_msg", "general commit message")
+def test_return_true_if_special_commit(special_commit):
+    # Expect: Return True
+    assert is_special_commit(special_commit) is True
+
+
+@pytest.mark.parametrize("commit_msg", ("general commit message",))
 def test_return_false_if_general_commit(commit_msg):
     # Expect: Return False
     assert is_special_commit(commit_msg) is False
-
-
-@pytest.mark.parametrize("commit_msg", ("Merge ", "Revert ", "Revert:"))
-def test_return_true_if_special_commit(commit_msg):
-    # Expect: Return True
-    assert is_special_commit(commit_msg) is True

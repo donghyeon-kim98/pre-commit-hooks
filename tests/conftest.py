@@ -48,3 +48,8 @@ def branch_with_ticket_id(ticket_id):
 @pytest.fixture(scope="session")
 def git_helpers():
     return GitHelpers
+
+
+@pytest.fixture(params=("Merge", "Revert"), scope="session")
+def special_commit(request):
+    return request.param
