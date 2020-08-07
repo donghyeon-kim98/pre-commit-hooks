@@ -5,9 +5,12 @@ from .consts import PASS, TICKET_ID
 from .helper import get_commit_msg, get_current_branch_name, get_ticket_id
 
 
-def add_ticket_id(filename: str, commit_msg: str, ticket_id: str) -> None:
-    with open(filename, "w") as f:
+def add_ticket_id(filename: str, ticket_id: str) -> None:
+    with open(filename, "r+") as f:
+        commit_msg = f.read()
+        f.seek(0)
         f.write(f"{ticket_id} {commit_msg}")
+        f.truncate()
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
@@ -15,12 +18,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument("filename")
     args = parser.parse_args(argv)
 
-    commit_msg = get_commit_msg(args.filename)
-    current_branch = get_current_branch_name()
-    current_ticket_id = get_ticket_id(current_branch)
-
-    if not TICKET_ID.match(commit_msg):
-        add_ticket_id(args.filename, commit_msg, current_ticket_id)
+    if not TICKET_ID.match(get_commit_msg(args.filename)):
+        add_ticket_id(
+            filename=args.filename, ticket_id=get_ticket_id(get_current_branch_name()),
+        )
 
     return PASS
 
