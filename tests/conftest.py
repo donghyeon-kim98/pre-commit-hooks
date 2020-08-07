@@ -3,7 +3,7 @@ import subprocess
 import pytest
 
 
-class GitHelpers:
+class GitHelper:
     @staticmethod
     def checkout(branch: str, create: bool = True):
         cmd = ["git", "checkout"]
@@ -46,8 +46,8 @@ def branch_with_ticket_id(ticket_id):
 
 
 @pytest.fixture(scope="session")
-def git_helpers():
-    return GitHelpers
+def git_helper():
+    return GitHelper
 
 
 @pytest.fixture(params=("Merge", "Revert"), scope="session")
