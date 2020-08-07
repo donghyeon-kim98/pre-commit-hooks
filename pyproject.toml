@@ -2,7 +2,7 @@
 line-length = 120
 
 [tool.isort]
-line-length = 120
+line_length = 120
 
 [tool.poetry]
 name = "yogiyo-pre-commit-hooks"
