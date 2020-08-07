@@ -3,7 +3,7 @@
 ## 버전 관리 (Semantic Versioning)
 
 버전은 커밋 메시지를 이용하여 자동으로 릴리즈됩니다.
-커밋 메시지 컨벤션(Angular Commit Message Conventions)[https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines]을 확인해주세요.
+커밋 메시지 컨벤션[Angular Commit Message Conventions](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines)을 확인해주세요.
 
 | Commit message                                                                                               | Release Type     |
 | ------------------------------------------------------------------------------------------------------------ | ---------------- |
