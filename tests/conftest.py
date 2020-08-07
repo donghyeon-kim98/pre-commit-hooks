@@ -30,9 +30,9 @@ def temp_git_dir(tmpdir):
     return git_dir
 
 
-@pytest.fixture(scope="session")
-def commit_editmsg_ref():
-    return ".git/COMMIT_EDITMSG"
+@pytest.fixture
+def commit_editmsg_ref(temp_git_dir):
+    return str(temp_git_dir.join(".git/COMMIT_EDITMSG"))
 
 
 @pytest.fixture(scope="session")
