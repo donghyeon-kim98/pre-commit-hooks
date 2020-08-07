@@ -34,5 +34,6 @@ def test_do_not_add_ticket_id_if_commit_message_is_start_with_ticket_id(
         mock_add_ticket_id = mocker.patch("hooks.prepare_jira_commit_msg.add_ticket_id")
         ret = main(argv=[str(temp_git_dir.join(commit_editmsg_ref))])
 
+        # Then: add_ticket_id not called
         assert ret == 0
         mock_add_ticket_id.assert_not_called()
