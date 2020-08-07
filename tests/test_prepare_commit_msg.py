@@ -3,7 +3,7 @@ from hooks.prepare_jira_commit_msg import main
 
 
 def test_should_remove_leading_and_trailing_whitespaces_in_commit_message(
-    temp_git_dir, branch_with_ticket_id, commit_editmsg_ref, ticket_id, git_helpers
+    temp_git_dir, branch_with_ticket_id, commit_editmsg_ref, ticket_id, git_helpers,
 ):
     with temp_git_dir.as_cwd():
         # Given: Commit message with leading and trailing whitespaces
@@ -39,7 +39,7 @@ def test_should_add_ticket_id_if_commit_message_is_not_start_with_ticket_id(
 
 
 def test_should_not_add_ticket_id_if_commit_message_is_start_with_ticket_id(
-    temp_git_dir, commit_editmsg_ref, branch_with_ticket_id, ticket_id, git_helpers, mocker
+    temp_git_dir, commit_editmsg_ref, branch_with_ticket_id, ticket_id, git_helpers, mocker,
 ):
     with temp_git_dir.as_cwd():
         # Given: Commit with commit message is start with ticket id
