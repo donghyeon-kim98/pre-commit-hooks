@@ -26,7 +26,7 @@ class GitHelpers:
 @pytest.fixture
 def temp_git_dir(tmpdir):
     git_dir = tmpdir.join("git_dir")
-    subprocess.run(["git", "init", "--", str(git_dir)], capture_output=True)
+    subprocess.run(["git", "init", "--", str(git_dir)])
     return git_dir
 
 

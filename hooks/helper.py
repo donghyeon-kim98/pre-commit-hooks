@@ -16,8 +16,9 @@ def get_current_branch_name() -> str:
     # fmt: off
     return subprocess.run(
         ["git", "branch", "--show-current"],
-        capture_output=True,
-    ).stdout.strip().decode("utf-8")
+        stdout=subprocess.PIPE,
+        universal_newlines=True,
+    ).stdout.strip()
     # fmt: on
 
 
