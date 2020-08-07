@@ -41,6 +41,11 @@ jobs:
       run: poetry install
 
     - name: Run Pytest
+      env:
+        GIT_AUTHOR_NAME: "yogiyo"
+        GIT_COMMITTER_NAME: "yogiyo"
+        GIT_AUTHOR_EMAIL: "yogiyo@deliveryhero.co.kr"
+        GIT_COMMITTER_EMAIL: "yogiyo@deliveryhero.co.kr"
       run: poetry run pytest
 
     - uses: pre-commit/action@v2.0.0
