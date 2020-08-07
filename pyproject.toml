@@ -11,7 +11,7 @@ description = ""
 authors = ["donghyeon.kim <donghyeon.kim@deliveryhero.co.kr>"]
 
 [tool.poetry.dependencies]
-python = "3.6"
+python = "^3.6"
 
 [tool.poetry.dev-dependencies]
 isort = "^5.3.2"
