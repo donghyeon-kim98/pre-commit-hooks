@@ -55,7 +55,7 @@ def test_should_fail_if_ticket_id_in_commit_message_does_not_match_ticket_id_in_
         # Given: Ticket id isn't match ticket id in branch
         git_helper.checkout(branch_with_ticket_id)
         git_helper.stage_new_file()
-        git_helper.commit(f"NO{ticket_id}")
+        git_helper.commit(f"NOT_MATCHED_{ticket_id}")
 
         # When: Call hook
         ret = hook(argv=[commit_editmsg_ref])
