@@ -1,7 +1,8 @@
 import argparse
+import os
 from typing import Optional, Sequence
 
-from .consts import FAIL, PASS, TICKET_ID
+from .consts import TICKET_ID
 from .helper import get_commit_msg, get_current_branch_name, get_ticket_id, is_special_commit
 
 
@@ -30,21 +31,21 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     commit_msg = get_commit_msg(args.filename)
 
     if is_special_commit(commit_msg):
-        return PASS
+        return os.EX_OK
 
     elif not TICKET_ID.match(commit_msg):
         abort("Commit message should start with ticket number.")
-        return FAIL
+        return os.EX_DATAERR
 
     elif not match_current_branch(commit_msg):
         abort("Ticket number in commit message should match current branch name.")
-        return FAIL
+        return os.EX_DATAERR
 
     elif is_empty_msg(commit_msg):
         abort("Commit message should have content (except ticket number).")
-        return FAIL
+        return os.EX_DATAERR
 
-    return PASS
+    return os.EX_OK
 
 
 if __name__ == "__main__":

@@ -1,7 +1,8 @@
 import argparse
+import os
 from typing import Optional, Sequence
 
-from .consts import PASS, TICKET_ID
+from .consts import TICKET_ID
 from .helper import get_commit_msg, get_current_branch_name, get_ticket_id
 
 
@@ -23,7 +24,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             filename=args.filename, ticket_id=get_ticket_id(get_current_branch_name()),
         )
 
-    return PASS
+    return os.EX_OK
 
 
 if __name__ == "__main__":

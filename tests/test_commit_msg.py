@@ -1,4 +1,5 @@
-from hooks.consts import FAIL, PASS
+import os
+
 from hooks.jira_commit_msg import main as hook
 
 
@@ -14,14 +15,14 @@ def test_should_pass_if_ticket_id_in_commit_message(
         ret = hook(argv=[commit_editmsg_ref])
 
         # Then: Return pass
-        assert ret == PASS
+        assert ret == os.EX_OK
 
 
 def test_should_pass_when_without_ticket_id_if_commit_is_special_commit(
     temp_git_dir, git_helper, commit_editmsg_ref, special_commit,
 ):
     with temp_git_dir.as_cwd():
-        # Given: Commit with special commit message
+        # Given: Commit is special commit
         git_helper.stage_new_file()
         git_helper.commit(special_commit)
 
@@ -29,13 +30,14 @@ def test_should_pass_when_without_ticket_id_if_commit_is_special_commit(
         ret = hook(argv=[commit_editmsg_ref])
 
         # Then: Return pass
-        assert ret == PASS
+        assert ret == os.EX_OK
 
 
 def test_should_fail_if_ticket_id_not_in_commit_message(
     temp_git_dir, git_helper, commit_editmsg_ref,
 ):
     with temp_git_dir.as_cwd():
+        # Given: Commit message without ticket id
         git_helper.stage_new_file()
         git_helper.commit("without ticket id")
 
@@ -43,7 +45,7 @@ def test_should_fail_if_ticket_id_not_in_commit_message(
         ret = hook(argv=[commit_editmsg_ref])
 
         # Then: Return fail
-        assert ret == FAIL
+        assert ret == os.EX_DATAERR
 
 
 def test_should_fail_if_ticket_id_in_commit_message_does_not_match_ticket_id_in_branch(
@@ -59,7 +61,7 @@ def test_should_fail_if_ticket_id_in_commit_message_does_not_match_ticket_id_in_
         ret = hook(argv=[commit_editmsg_ref])
 
         # Then: Return fail
-        assert ret == FAIL
+        assert ret == os.EX_DATAERR
 
 
 def test_should_fail_if_commit_message_is_empty_except_ticket_id(
@@ -75,4 +77,4 @@ def test_should_fail_if_commit_message_is_empty_except_ticket_id(
         ret = hook(argv=[commit_editmsg_ref])
 
         # Then: Return fail
-        assert ret == FAIL
+        assert ret == os.EX_DATAERR
