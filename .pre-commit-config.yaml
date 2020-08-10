@@ -28,9 +28,8 @@ repos:
     hooks:
       - id: mypy
 
-#  TODO: 현재 repo가 private 상태라 github workflow에서 실패함
-#  - repo: https://github.com/yogiyo/pre-commit-hooks
-#    rev: 0.1.0
-#    hooks:
-#      - id: jira-commit-msg
-#      - id: prepare-jira-commit-msg
+  - repo: https://github.com/yogiyo/pre-commit-hooks
+    rev: ''
+    hooks:
+      - id: jira-commit-msg
+      - id: prepare-jira-commit-msg
