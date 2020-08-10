@@ -2,6 +2,8 @@ import subprocess
 
 import pytest
 
+from hooks.consts import SPECIAL_COMMIT
+
 
 class GitHelper:
     @staticmethod
@@ -50,6 +52,6 @@ def git_helper():
     return GitHelper
 
 
-@pytest.fixture(params=("Merge", "Revert"), scope="session")
+@pytest.fixture(params=SPECIAL_COMMIT, scope="session")
 def special_commit(request):
     return request.param

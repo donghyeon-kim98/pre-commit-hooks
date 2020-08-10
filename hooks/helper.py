@@ -1,10 +1,10 @@
 import subprocess
 
-from .consts import BRANCH_TICKET_ID
+from .consts import BRANCH_TICKET_ID, SPECIAL_COMMIT
 
 
 def is_special_commit(commit_msg: str) -> bool:
-    return commit_msg.startswith(("Merge", "Revert"))
+    return commit_msg.startswith(SPECIAL_COMMIT)
 
 
 def get_commit_msg(filename: str) -> str:

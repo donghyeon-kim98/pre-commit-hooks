@@ -24,7 +24,7 @@ def test_should_pass_when_without_ticket_id_if_commit_is_special_commit(
     with temp_git_dir.as_cwd():
         # Given: Commit is special commit
         git_helper.stage_new_file()
-        git_helper.commit(special_commit)
+        git_helper.commit(f"{special_commit} commit message")
 
         # When: Call hook
         ret = hook(argv=[commit_editmsg_ref])
