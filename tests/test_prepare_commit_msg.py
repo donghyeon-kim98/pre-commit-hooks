@@ -19,7 +19,7 @@ def test_should_remove_leading_and_trailing_whitespaces_in_commit_message(
 
         # Then: Should remove leading and trailing whitespaces in commit message
         assert ret == os.EX_OK
-        assert get_commit_msg(commit_editmsg_ref)
+        assert get_commit_msg(commit_editmsg_ref) == f"{ticket_id} {commit_message_with_whitespaces.strip()}\n"
 
 
 def test_should_add_ticket_id_if_commit_message_is_not_start_with_ticket_id(
@@ -37,7 +37,7 @@ def test_should_add_ticket_id_if_commit_message_is_not_start_with_ticket_id(
 
         # Then: Commit message should start with ticket id
         assert ret == os.EX_OK
-        assert get_commit_msg(commit_editmsg_ref) == f"{ticket_id} {commit_msg}"
+        assert get_commit_msg(commit_editmsg_ref) == f"{ticket_id} {commit_msg}\n"
 
 
 def test_should_not_add_ticket_id_if_commit_message_is_start_with_ticket_id(
