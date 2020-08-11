@@ -1,0 +1,51 @@
+name: pre-commit
+
+on: [push]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install and set up Poetry
+      run: |
+        pip install --upgrade pip
+        pip install "poetry>=0.12"
+        poetry config virtualenvs.in-project true
+
+    - name: Set up Poetry cache
+      uses: actions/cache@v2
+      id: cache
+      with:
+        path: .venv
+        key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+
+    - name: Set up pre-commit repo cache
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pre-commit
+        key: pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
+
+    - name: Install dependencies
+      run: poetry install
+
+    - name: Run Pytest
+      env:
+        GIT_AUTHOR_NAME: "yogiyo"
+        GIT_COMMITTER_NAME: "yogiyo"
+        GIT_AUTHOR_EMAIL: "yogiyo@deliveryhero.co.kr"
+        GIT_COMMITTER_EMAIL: "yogiyo@deliveryhero.co.kr"
+      run: poetry run pytest
+
+    - uses: pre-commit/action@v2.0.0

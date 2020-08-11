@@ -1,23 +1,24 @@
 import subprocess
 
-from .consts import BRANCH_TICKET_ID
+from .consts import BRANCH_TICKET_ID, SPECIAL_COMMIT
 
 
 def is_special_commit(commit_msg: str) -> bool:
-    return commit_msg.startswith(("Merge ", "Revert ", "Revert:"))
+    return commit_msg.startswith(SPECIAL_COMMIT)
 
 
 def get_commit_msg(filename: str) -> str:
     with open(filename, "r") as f:
-        return f.read().strip()
+        return f.read()
 
 
 def get_current_branch_name() -> str:
     # fmt: off
     return subprocess.run(
         ["git", "branch", "--show-current"],
-        capture_output=True,
-    ).stdout.strip().decode("utf-8")
+        stdout=subprocess.PIPE,
+        universal_newlines=True,
+    ).stdout.strip()
     # fmt: on
 
 

@@ -1,6 +1,8 @@
+default_stages: [commit]
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.4.0
+    rev: v3.2.0
     hooks:
       - id: trailing-whitespace
       - id: check-yaml
@@ -16,7 +18,18 @@ repos:
     hooks:
       - id: flake8
 
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.3.2
+    hooks:
+      - id: isort
+
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: ''
+    rev: v0.782
     hooks:
       - id: mypy
+
+  - repo: https://github.com/yogiyo/pre-commit-hooks
+    rev: ''
+    hooks:
+      - id: jira-commit-msg
+      - id: prepare-jira-commit-msg
