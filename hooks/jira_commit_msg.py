@@ -1,3 +1,6 @@
+"""
+git commit message에 현재 git branch의 jira 티켓 번호가 포함되어 있는지 검증합니다.
+"""
 import argparse
 import os
 from typing import Optional, Sequence

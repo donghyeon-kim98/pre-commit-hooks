@@ -1,3 +1,6 @@
+"""
+git commit message에 현재 git branch의 jira 티켓 번호를 추가합니다.
+"""
 import argparse
 import os
 from typing import Optional, Sequence
