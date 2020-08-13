@@ -32,7 +32,7 @@ def test_should_return_hook_name_with_hyphen_and_docstring_of_hook_file(temp_git
         temp_git_dir.mkdir(HOOKS_DIR)
         temp_git_dir.join(HOOKS_DIR, "hook_name.py").write(dump_file_content)
 
-        # Expect: Should return hook name with hyphen with docstring of hook file
+        # Expect: Should return hook name with hyphen and docstring of hook file
         assert get_hook_docstrings() == {"hook-name": "hello world"}
 
 
