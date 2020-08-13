@@ -1,6 +1,6 @@
 import os
 
-from hooks.helper import get_commit_msg
+from hooks.helpers import get_commit_msg
 from hooks.prepare_jira_commit_msg import main as hook
 
 

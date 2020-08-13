@@ -1,6 +1,6 @@
 import pytest
 
-from hooks.helper import get_commit_msg, get_current_branch_name, get_ticket_id, is_special_commit
+from hooks.helpers import get_commit_msg, get_current_branch_name, get_ticket_id, is_special_commit
 
 
 def test_return_expected_branch_name(temp_git_dir, branch_with_ticket_id, git_helper):
