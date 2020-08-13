@@ -7,6 +7,7 @@ repos:
       - id: trailing-whitespace
       - id: check-yaml
       - id: end-of-file-fixer
+      - id: check-executables-have-shebangs
 
   - repo: https://github.com/psf/black
     rev: 19.10b0
@@ -19,7 +20,7 @@ repos:
       - id: flake8
 
   - repo: https://github.com/pre-commit/mirrors-isort
-    rev: v5.3.2
+    rev: v5.4.1
     hooks:
       - id: isort
 
@@ -29,7 +30,7 @@ repos:
       - id: mypy
 
   - repo: https://github.com/yogiyo/pre-commit-hooks
-    rev: ''
+    rev: '0.1.0'
     hooks:
       - id: jira-commit-msg
       - id: prepare-jira-commit-msg
