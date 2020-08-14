@@ -69,5 +69,5 @@ jobs:
         scripts/write_hooks_md.py
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
         git add HOOKS.md
-        git commit -am "Update HOOKS.md" ||  true
-        git push --force origin HEAD:$GITHUB_REF || true
+        git commit -m "Update HOOKS.md" ||  true
+        git push origin HEAD:$GITHUB_REF || true
