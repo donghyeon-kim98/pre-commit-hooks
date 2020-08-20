@@ -23,7 +23,7 @@ def test_should_find_only_hook_files(temp_git_dir, exclude_file):
         temp_git_dir.join(HOOKS_DIR, "hook.py").write("hello_world")
 
         # Expect: Should find only hook file
-        assert [f for f in find_hook_files()] == [Path(HOOKS_DIR, "hook.py")]
+        assert list(find_hook_files()) == [Path(HOOKS_DIR, "hook.py")]
 
 
 def test_should_return_hook_name_with_hyphen_and_docstring_of_hook_file(temp_git_dir, dump_file_content):
