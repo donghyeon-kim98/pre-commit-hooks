@@ -20,8 +20,8 @@ def get_hook_docstrings() -> Dict[str, str]:
     docstrings = {}
 
     for hook_file in find_hook_files():
-        with hook_file.open("r") as fd:
-            module = ast.parse(fd.read())
+        with hook_file.open("r") as f:
+            module = ast.parse(f.read())
             docstring = ast.get_docstring(module)
             docstrings[hook_file.stem.replace("_", "-")] = docstring or ""
     return docstrings
