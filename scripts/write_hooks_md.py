@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Dict, Iterable
 
 HOOKS_DIR = "hooks"
-EXCLUDE_FILES = ["__init__.py", "consts.py", "helpers.py"]
+EXCLUDE_FILES = {"__init__.py", "consts.py", "helpers.py"}
 
 
 def find_hook_files() -> Iterable[Path]:
