@@ -1,9 +1,12 @@
+"""
+git commit message에 현재 git branch의 jira 티켓 번호를 추가합니다.
+"""
 import argparse
 import os
 from typing import Optional, Sequence
 
 from .consts import TICKET_ID
-from .helper import get_commit_msg, get_current_branch_name, get_ticket_id
+from .helpers import get_commit_msg, get_current_branch_name, get_ticket_id
 
 
 def add_ticket_id(filename: str, ticket_id: str) -> None:
