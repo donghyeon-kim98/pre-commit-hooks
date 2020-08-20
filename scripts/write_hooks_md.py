@@ -29,12 +29,8 @@ def get_hook_docstrings() -> Dict[str, str]:
 
 def write_hooks_md() -> None:
     with open("HOOKS.md", "w") as f:
-        hooks_md = "# Hooks\n"
-
-        for hook, docstring in get_hook_docstrings().items():
-            hooks_md += f"\n`{hook}`\n\n{docstring}\n"
-
-        f.write(hooks_md)
+        f.write("# Hooks\n")
+        f.writelines(f"\n`{hook}`\n\n{docstring}\n" for hook, docstring in get_hook_docstrings().items())
 
 
 if __name__ == "__main__":
