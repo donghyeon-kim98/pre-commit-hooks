@@ -13,6 +13,10 @@ packages = [
     { include = "hooks/**/*.py" },
 ]
 
+[tool.poetry.scripts]
+prepare-jira-commit-msg = 'hooks.prepare_jira_commit_msg:main'
+jira-commit-msg = 'hooks.jira_commit_msg:main'
+
 [tool.poetry.dependencies]
 python = "^3.6"
 
